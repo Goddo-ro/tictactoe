@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="assets/styles/index.css">
+</head>
+<body>
+<main>
+    <section id="game-container">
+        <div class="game">
+            <div class="game--header">
+                <div class="player active">
+                    <img src="assets/images/cross.svg" alt="cross">
+                    <h2>: <span id="user-one">godoo</span></h2>
+                </div>
+                <div class="player">
+                    <img src="assets/images/circle.svg" alt="circle">
+                    <h2>: <span id="user-two">roroo</span></h2>
+                </div>
+            </div>
+
+            <div class="game--body">
+                <table id="game--table">
+
+                </table>
+            </div>
+
+            <div class="game--footer">
+                <button id="restrat-button">Restart</button>
+            </div>
+        </div>
+    </section>
+</main>
+<script type="module" src="modules/index.mjs"></script>
+</body>
+</html>

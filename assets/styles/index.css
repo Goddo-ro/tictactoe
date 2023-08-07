@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import "game.css";
+
+:root {
+    --header-height: 60px;
+    --main-backround-color: #00ADB5;
+    --game-background-color: #222831;
+    --game-body-background-color: #393E46;
+    --text-color: #EEEEEE;
+
+    --game-max-height: 800px;
+    --game-max-width: 600px;
+    --game-border-radius: 8px;
+
+    --player-svg-size: 20px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+}
