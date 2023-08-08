@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 @import "game.css";
+@import "modal.css";
 
 :root {
     --header-height: 60px;
@@ -7,6 +8,7 @@
     --game-background-color: #222831;
     --game-body-background-color: #393E46;
     --text-color: #EEEEEE;
+    --error-color: #d25858;
 
     --game-max-height: 800px;
     --game-max-width: 600px;

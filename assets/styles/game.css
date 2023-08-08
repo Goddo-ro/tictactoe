@@ -22,10 +22,10 @@
 
 .game--header {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
-    gap: 2rem;
 }
 
 .player {
@@ -71,4 +71,11 @@
     font-weight: 400;
     color: var(--main-backround-color);
     cursor: pointer;
+}
+
+@media (min-width: 370px) {
+    .game--header {
+        flex-direction: row;
+        gap: 2rem;
+    }
 }

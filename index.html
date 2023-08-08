@@ -13,11 +13,11 @@
             <div class="game--header">
                 <div class="player active">
                     <img src="assets/images/cross.svg" alt="cross">
-                    <h2>: <span id="user-one">godoo</span></h2>
+                    <h2>: <span id="player-one">godoo</span></h2>
                 </div>
                 <div class="player">
                     <img src="assets/images/circle.svg" alt="circle">
-                    <h2>: <span id="user-two">roroo</span></h2>
+                    <h2>: <span id="player-two">roroo</span></h2>
                 </div>
             </div>
 
@@ -28,11 +28,22 @@
             </div>
 
             <div class="game--footer">
-                <button id="restrat-button">Restart</button>
+                <button id="restart-button">Restart</button>
             </div>
         </div>
     </section>
 </main>
+
+<div id="modal-container">
+    <div class="modal-content">
+        <h4>Введите имена игроков:</h4>
+        <input id="playerOneInput" placeholder="Player 1...">
+        <input id="playerTwoInput" placeholder="Player 2...">
+        <p class="error-text" id="errorLabel"></p>
+        <button id="saveBtn">Save</button>
+    </div>
+</div>
+
 <script type="module" src="modules/index.mjs"></script>
 </body>
 </html>
