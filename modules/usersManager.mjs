@@ -9,7 +9,7 @@ export default function usersManager(error = "") {
     errorLabel.innerText = 'Error: ' + error;
     setTimeout(() => {
       errorLabel.innerText = "";
-    }, 5000);
+    }, 3000);
   }
 
   return new Promise((resolve, reject) => {

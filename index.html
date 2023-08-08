@@ -11,20 +11,20 @@
     <section id="game-container">
         <div class="game">
             <div class="game--header">
-                <div class="player active">
+                <div class="player active" id="player-one-container">
                     <img src="assets/images/cross.svg" alt="cross">
-                    <h2>: <span id="player-one">godoo</span></h2>
+                    <h2>: <span id="player-one"></span></h2>
                 </div>
-                <div class="player">
+                <div class="player" id="player-two-container">
                     <img src="assets/images/circle.svg" alt="circle">
-                    <h2>: <span id="player-two">roroo</span></h2>
+                    <h2>: <span id="player-two"></span></h2>
                 </div>
             </div>
 
             <div class="game--body">
-                <table id="game--table">
+                <div id="game--table">
 
-                </table>
+                </div>
             </div>
 
             <div class="game--footer">
@@ -44,6 +44,6 @@
     </div>
 </div>
 
-<script type="module" src="modules/index.mjs"></script>
+<script type="module" src="modules/app.mjs"></script>
 </body>
 </html>
