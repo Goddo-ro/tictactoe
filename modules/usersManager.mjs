@@ -2,6 +2,8 @@ export default function usersManager(error = "") {
   const modalWindow = document.getElementById("modal-container");
   const playerOneInput = document.getElementById("playerOneInput");
   const playerTwoInput = document.getElementById("playerTwoInput");
+  const firstRadio = document.getElementById("first");
+  const secondRadio = document.getElementById("second");
   const errorLabel = document.getElementById("errorLabel");
   const saveBtn = document.getElementById("saveBtn");
 
@@ -17,7 +19,8 @@ export default function usersManager(error = "") {
       if (playerOneInput.value && playerTwoInput.value) {
         modalWindow.style.display = "none";
         saveBtn.removeEventListener("click", handleClick);
-        resolve([playerOneInput.value, playerTwoInput.value]);
+        resolve([playerOneInput.value, playerTwoInput.value,
+                      firstRadio.checked ? 0 : 1]);
       } else {
         reject("Enter players names");
       }

@@ -1,5 +1,5 @@
 import usersManager from "./usersManager.mjs";
-import { disableCells, fillTable, markWin } from "./gameManager.js";
+import { disableCells, fillTable, markWin, toggleCurPlayer } from "./gameManager.js";
 
 (function app() {
   const players = document.querySelectorAll(".game--header .player");
@@ -22,15 +22,15 @@ import { disableCells, fillTable, markWin } from "./gameManager.js";
       namesPromise = usersManager(err);
     });
 
-  function startGame(user1, user2) {
+  function startGame(user1, user2, start = 0) {
     playerOne.innerText = user1;
     playerTwo.innerText = user2;
     fieldsArr = [];
-    curPlayer = 0;
+    curPlayer = start;
     winMessage.style.display = "none";
     players.forEach(player => player.style.display = "flex");
 
-    fillTable(fieldsArr, showEndMessage);
+    fillTable(fieldsArr, showEndMessage, start);
   }
 
   function showEndMessage(winner, i, j, dir) {
@@ -40,7 +40,6 @@ import { disableCells, fillTable, markWin } from "./gameManager.js";
     if (winner === -1) {
       winMessage.innerHTML = 'Draw!';
     } else {
-      console.log(playerOne.innerText)
       winMessage.innerHTML = `Player <span>${!winner ? playerOne.innerText : playerTwo.innerText}</span> won!`;
       disableCells();
       markWin(fieldsArr, i, j, dir);

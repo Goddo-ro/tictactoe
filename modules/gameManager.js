@@ -5,6 +5,8 @@ const playerTwoContainer = document.getElementById("player-two-container");
 const table = document.getElementById("game--table");
 
 export const fillTable = (fieldsArr, showEndMessage, curPlayer = 0) => {
+  toggleCurPlayer(curPlayer);
+
   table.innerHTML = "";
   table.style.gridTemplateColumns = `repeat(${COUNT_OF_RECTS}, 1fr)`;
   table.style.gridTemplateRows = `repeat(${COUNT_OF_RECTS}, 1fr)`;
@@ -27,8 +29,7 @@ export const fillTable = (fieldsArr, showEndMessage, curPlayer = 0) => {
         curRow[j] = curPlayer;
         curPlayer = (curPlayer + 1) % 2;
 
-        playerOneContainer.classList.toggle("active");
-        playerTwoContainer.classList.toggle("active");
+        toggleCurPlayer(curPlayer);
         curField.innerHTML = `<img src="../assets/images/${curPlayer ? "cross.svg" : "circle.svg"}" >`
 
         checkWinner(fieldsArr, showEndMessage);
@@ -36,6 +37,16 @@ export const fillTable = (fieldsArr, showEndMessage, curPlayer = 0) => {
     }
 
     fieldsArr.push(curRow);
+  }
+}
+
+export const toggleCurPlayer = (curPlayer) => {
+  if (!curPlayer) {
+    playerOneContainer.classList.add("active");
+    playerTwoContainer.classList.remove("active");
+  } else {
+    playerOneContainer.classList.remove("active");
+    playerTwoContainer.classList.add("active");
   }
 }
 

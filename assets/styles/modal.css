@@ -28,6 +28,16 @@
     margin-bottom: .5rem;
 }
 
+.modal-content h4:not(:first-child) {
+    margin-top: 1rem;
+}
+
+.modal-content > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
 .modal-content input {
     outline: none;
     border: none;

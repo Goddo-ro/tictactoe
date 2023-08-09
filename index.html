@@ -39,9 +39,20 @@
 
 <div id="modal-container">
     <div class="modal-content">
-        <h4>Введите имена игроков:</h4>
+        <h4>Enter players names:</h4>
         <input id="playerOneInput" placeholder="Player 1...">
         <input id="playerTwoInput" placeholder="Player 2...">
+        <h4>Start:</h4>
+        <div>
+            <label>
+                <input type="radio" id="first" name="start" value="0" checked />
+                First player
+            </label>
+            <label>
+                <input type="radio" id="second" name="start" value="1" />
+                Second player
+            </label>
+        </div>
         <p class="error-text" id="errorLabel"></p>
         <button id="saveBtn">Save</button>
     </div>
