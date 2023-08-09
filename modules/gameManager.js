@@ -25,7 +25,7 @@ export const fillTable = (fieldsArr, showEndMessage, curPlayer = 0) => {
       curField.id = String(i) + j;
       table.append(curField);
 
-      curField.addEventListener("click", () => {
+      const handeClick = () => {
         curRow[j] = curPlayer;
         curPlayer = (curPlayer + 1) % 2;
 
@@ -33,7 +33,10 @@ export const fillTable = (fieldsArr, showEndMessage, curPlayer = 0) => {
         curField.innerHTML = `<img src="assets/images/${curPlayer ? "cross.svg" : "circle.svg"}" >`
 
         checkWinner(fieldsArr, showEndMessage);
-      });
+        curField.removeEventListener("click", handeClick);
+      }
+
+      curField.addEventListener("click", handeClick);
     }
 
     fieldsArr.push(curRow);
