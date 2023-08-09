@@ -46,3 +46,7 @@
     margin-top: .5rem;
     color: var(--error-color);
 }
+
+#modal-container {
+    display: none;
+}

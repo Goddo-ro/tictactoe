@@ -1,6 +1,6 @@
 import usersManager from "./usersManager.mjs";
 import { COUNT_OF_RECTS } from "./settings.mjs";
-import { fillTable } from "./gameManager.js";
+import { disableCells, fillTable } from "./gameManager.js";
 
 (function app() {
   const playerOne = document.getElementById("player-one");
@@ -10,16 +10,18 @@ import { fillTable } from "./gameManager.js";
   let fieldsArr = [];
   let curPlayer = 0;
 
-  let namesPromise = usersManager()
-    .then(res => {
-      startGame(...res);
-      restartBtn.addEventListener("click", () => {
-        startGame(...res);
-      });
-    })
-    .catch(err => {
-      namesPromise = usersManager(err);
-    });
+  // let namesPromise = usersManager()
+  //   .then(res => {
+  //     startGame(...res);
+  //     restartBtn.addEventListener("click", () => {
+  //       startGame(...res);
+  //     });
+  //   })
+  //   .catch(err => {
+  //     namesPromise = usersManager(err);
+  //   });
+
+  startGame("user1", "user2");
 
   function startGame(user1, user2) {
     playerOne.innerText = user1;
@@ -30,7 +32,7 @@ import { fillTable } from "./gameManager.js";
     fillTable(fieldsArr, showEndMessage);
   }
 
-  function showEndMessage(winner) {
-    console.log("END!", winner);
+  function showEndMessage(i, j, dir) {
+    disableCells();
   }
 })();

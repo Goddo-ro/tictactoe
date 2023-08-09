@@ -20,6 +20,7 @@ export const fillTable = (fieldsArr, showEndMessage, curPlayer = 0) => {
     for (let j = 0; j < COUNT_OF_RECTS; j++) {
       curRow.push(-1);
       const curField = document.createElement("div");
+      curField.id = String(i) + j;
       table.append(curField);
 
       curField.addEventListener("click", () => {
@@ -36,6 +37,15 @@ export const fillTable = (fieldsArr, showEndMessage, curPlayer = 0) => {
 
     fieldsArr.push(curRow);
   }
+}
+
+export const disableCells = () => {
+    document.querySelectorAll("#game--table > div").forEach(div => {
+      const newCell = document.createElement("div");
+      newCell.id = div.id;
+      newCell.innerHTML = div.innerHTML;
+      table.replaceChild(newCell, div);
+    })
 }
 
 const checkWinner = (fieldsArr, showEndMessage) => {
@@ -79,10 +89,14 @@ const checkWinner = (fieldsArr, showEndMessage) => {
   for (let i = 0; i < fieldsArr.length; i++) {
     for (let j = 0; j < fieldsArr[i].length; j++) {
       if (fieldsArr[i][j] === -1) hasEmpty = true;
-      else if (checkRow(i, j) ||
-                checkCol(i, j) ||
-                checkDiag(i, j)) {
-        showEndMessage(fieldsArr[i][j]);
+      else if (checkRow(i, j)) {
+        showEndMessage(i, j, "row");
+        return;
+      } else if (checkCol(i, j)) {
+        showEndMessage(i, j, "col");
+        return;
+      } else if (checkDiag(i, j)) {
+        showEndMessage(i, j, "col");
         return;
       }
     }
