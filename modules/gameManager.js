@@ -71,11 +71,24 @@ const checkWinner = (fieldsArr, showEndMessage) => {
     return false;
   }
 
-  function checkDiag(i, j) {
+  function checkDiagRight(i, j) {
     let count = 1;
     for (let col = j + 1, row = i + 1;
          col < fieldsArr[i].length && row < fieldsArr.length;
          row++, col++) {
+      if (fieldsArr[row][col] === fieldsArr[i][j]) count++;
+      else return false;
+      if (count === COUNT_TO_WIN) return true;
+    }
+
+    return false;
+  }
+
+  function checkDiagLeft(i, j) {
+    let count = 1;
+    for (let col = j - 1, row = i + 1;
+         col > -1 && row < fieldsArr.length;
+         row++, col--) {
       if (fieldsArr[row][col] === fieldsArr[i][j]) count++;
       else return false;
       if (count === COUNT_TO_WIN) return true;
@@ -95,8 +108,11 @@ const checkWinner = (fieldsArr, showEndMessage) => {
       } else if (checkCol(i, j)) {
         showEndMessage(i, j, "col");
         return;
-      } else if (checkDiag(i, j)) {
-        showEndMessage(i, j, "col");
+      } else if (checkDiagRight(i, j)) {
+        showEndMessage(i, j, "colR");
+        return;
+      } else if (checkDiagLeft(i, j)) {
+        showEndMessage(i, j, "colL");
         return;
       }
     }
