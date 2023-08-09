@@ -30,7 +30,7 @@ export const fillTable = (fieldsArr, showEndMessage, curPlayer = 0) => {
         curPlayer = (curPlayer + 1) % 2;
 
         toggleCurPlayer(curPlayer);
-        curField.innerHTML = `<img src="../assets/images/${curPlayer ? "cross.svg" : "circle.svg"}" >`
+        curField.innerHTML = `<img src="assets/images/${curPlayer ? "cross.svg" : "circle.svg"}" >`
 
         checkWinner(fieldsArr, showEndMessage);
       });
