@@ -48,6 +48,48 @@ export const disableCells = () => {
     })
 }
 
+export const markWin = (fieldsArr, i, j, dir) => {
+  function getNewLine(dir) {
+    const line = document.createElement("div");
+    line.classList.add("line");
+    line.classList.add(dir);
+    return line;
+  }
+
+  function markHor() {
+    for (let col = j; col < fieldsArr[j].length && fieldsArr[i][col] === fieldsArr[i][j]; col++) {
+      document.getElementById(String(i) + col).append(getNewLine("horizontal"));
+    }
+  }
+
+  function markVert() {
+    for (let row = i; row < fieldsArr.length && fieldsArr[row][j] === fieldsArr[i][j]; row++) {
+      document.getElementById(String(row) + j).append(getNewLine("vertical"));
+    }
+  }
+
+  function markDiagR() {
+    for (let row = i, col = j;
+         row < fieldsArr.length && col < fieldsArr[j].length && fieldsArr[row][col] === fieldsArr[i][j];
+         row++, col++) {
+      document.getElementById(String(row) + col).append(getNewLine("diagR"));
+    }
+  }
+
+  function markDiagL() {
+    for (let row = i, col = j;
+         row < fieldsArr.length && col > -1 && fieldsArr[row][col] === fieldsArr[i][j];
+         row++, col--) {
+      document.getElementById(String(row) + col).append(getNewLine("diagL"));
+    }
+  }
+
+  if (dir === "row") markHor();
+  else if (dir === "col") markVert();
+  else if (dir === "diagR") markDiagR();
+  else if (dir === "diagL") markDiagL();
+}
+
 const checkWinner = (fieldsArr, showEndMessage) => {
   function checkRow(i, j) {
     let count = 1;
@@ -103,16 +145,16 @@ const checkWinner = (fieldsArr, showEndMessage) => {
     for (let j = 0; j < fieldsArr[i].length; j++) {
       if (fieldsArr[i][j] === -1) hasEmpty = true;
       else if (checkRow(i, j)) {
-        showEndMessage(i, j, "row");
+        showEndMessage(fieldsArr[i][j], i, j, "row");
         return;
       } else if (checkCol(i, j)) {
-        showEndMessage(i, j, "col");
+        showEndMessage(fieldsArr[i][j], i, j, "col");
         return;
       } else if (checkDiagRight(i, j)) {
-        showEndMessage(i, j, "colR");
+        showEndMessage(fieldsArr[i][j], i, j, "diagR");
         return;
       } else if (checkDiagLeft(i, j)) {
-        showEndMessage(i, j, "colL");
+        showEndMessage(fieldsArr[i][j], i, j, "diagL");
         return;
       }
     }

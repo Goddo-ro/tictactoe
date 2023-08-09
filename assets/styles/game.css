@@ -28,6 +28,16 @@
     border-top-right-radius: inherit;
 }
 
+.game--header h3 {
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+
+.game--header h3 span {
+    color: var(--main-backround-color);
+}
+
 .player {
     border-bottom: 1px solid var(--game-body-background-color);
     border-bottom-left-radius: var(--game-border-radius);
@@ -65,11 +75,41 @@
     background-color: var(--main-backround-color);
 }
 
-#game--table div {
+#game--table > div {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--game-body-background-color);
+}
+
+#game--table div.line {
+    width: 100%;
+    border-bottom: 1.5rem solid rgba(47, 243, 74, 0.5);
+    position: absolute;
+}
+
+#game--table div.line.horizontal {
+    left: 0; right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#game--table div.line.vertical {
+    left: 0; right: 0;
+    transform: rotate(90deg);
+}
+
+#game--table div.line.diagR {
+    width: 118%;
+    top: 50%;
+    transform: rotate(45deg) translate(-6%, -36%);
+}
+
+#game--table div.line.diagL {
+    width: 120%;
+    top: 50%;
+    transform: rotate(-45deg) translate(6%, -36%);
 }
 
 #game--table img {
