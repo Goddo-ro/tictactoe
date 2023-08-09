@@ -19,6 +19,7 @@ export default function usersManager(error = "") {
       if (playerOneInput.value && playerTwoInput.value) {
         modalWindow.style.display = "none";
         saveBtn.removeEventListener("click", handleClick);
+        document.removeEventListener("keyup", handleEnterPress);
         resolve([playerOneInput.value, playerTwoInput.value,
                       firstRadio.checked ? 0 : 1]);
       } else {
@@ -26,6 +27,13 @@ export default function usersManager(error = "") {
       }
     }
 
+    function handleEnterPress(e) {
+      if (e.keyCode === 13) {
+        handleClick();
+      }
+    }
+
     saveBtn.addEventListener("click", handleClick);
+    document.addEventListener("keyup", handleEnterPress);
   })
 }
